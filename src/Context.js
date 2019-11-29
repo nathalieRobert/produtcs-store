@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {storeProduct, detailProduct, storeProducts} from './data';
+import {detailProduct, storeProducts} from './data';
 
 const ProductContext = React.createContext();
 //Le Contexte offre un moyen de faire passer des données à travers l’arborescence du composant sans avoir à passer manuellement les props à chaque niveau.
@@ -8,17 +8,90 @@ const ProductContext = React.createContext();
 
  class ProductProvider extends Component {
      state = {
-         products: storeProducts, 
-         detailProduct: detailProduct
+         products: [], 
+         detailProduct: detailProduct,
+         cart: [],
+         modalOpen:false, 
+         modalProduct:detailProduct, 
+         cartSubTotal:0,
+         cartTax:0,
+         cartTotal:0
+
      }
 
-     //methods 
-     handleDetail = () =>{
-         console.log('hello from detail')
+     componentDidMount(){
+         this.storeProducts();
      }
 
-     addToCart = () =>{
-        console.log('hello from add to cart')
+     storeProducts = () =>{
+         let tempProducts =[];
+         storeProducts.forEach(item =>{
+             const singleItem = {...item};
+             tempProducts = [...tempProducts, singleItem]
+         })
+         this.setState(()=> {
+             return{products:tempProducts}
+         })
+     }
+
+     //methods pour chopper les details
+
+     getItem = (id) => {
+         const product = this.state.products.find(item => item.id ===id);
+         return product;
+     }
+     handleDetail = (id) =>{
+         const product = this.getItem(id);
+         this.setState(()=> {
+             return {detailProduct:product}
+         })
+     }
+
+     //methode pour ajouter un produit dans le panier (cart)
+     addToCart = id =>{
+         let tempProducts = [...this.state.products] 
+         const index =  tempProducts.indexOf(this.getItem(id));
+         const product = tempProducts[index];
+         product.inCart = true;
+         product.count = 1;
+         const price = product.price;
+         product.total = price;
+         this.setState(
+            ()=>{
+             return {products : tempProducts, cart:[...this.state.cart, product]}
+         }, ()=>{
+             console.log(this.state)
+            }
+         );
+    }
+
+    openModal =id =>{
+        const product = this.getItem(id);
+        this.setState(()=>{
+            return {modalProduct: product, modalOpen:true}
+        })
+    }
+
+    closeModal = () =>{
+        this.setState(()=> {
+            return {modalOpen:false}
+        })
+    }
+
+    increment = (id) => {
+        console.log("this is an increment method");
+    }
+
+    decrement = (id) => {
+        console.log("this is an decrement method");
+    }
+
+    removeItem = (id) =>{
+        console.log("item removed");
+    }
+
+    clearCart = (id) =>{
+        console.log("cart was cleared");
     }
 
     render() {
@@ -26,8 +99,16 @@ const ProductContext = React.createContext();
             <ProductContext.Provider value={{
                ...this.state,
                handleDetail:this.handleDetail,
-               addToCart: this.addToCart
+               addToCart: this.addToCart,
+               openModal:this.openModal,
+               closeModal:this.closeModal,
+               increment: this.increment,
+               decrement:this.decrement,
+               removeItem:this.removeItem,
+               clearCart:this.clearCart
+
             }}>
+               
                 {this.props.children}
             </ProductContext.Provider>
         )

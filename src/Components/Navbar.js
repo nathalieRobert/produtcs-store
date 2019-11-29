@@ -25,7 +25,7 @@ export default class Navbar extends Component {
                         </li>
                     </ul>
 
-                    <Link tp='/cart' className="ml-auto" >
+                    <Link to='/cart' className="ml-auto" >
                         <ButtonContainer>
                             <span className='mr-2'> 
                             <i className="fas fa-cart-plus"/>
@@ -40,7 +40,7 @@ export default class Navbar extends Component {
 }
 
 const NavWrapper = styled.nav `
-background: var(--mainBlue);
+background: rgba(28, 28, 28);
 .nav-link{
     color: var(--mainWhite) !important;
     font-size: 1.3rem;
