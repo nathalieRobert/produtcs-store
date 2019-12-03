@@ -8,15 +8,17 @@
 
 body{
 
-font-family: 'Oswald', sans-serif  !important;
-background: var(--mainWhite) !important;
+font-family: 'Open Sans', sans-serif  !important;
 color: var(--mainDark) !important;
 }
 
-.text-tile{
-  font-family: 'Permanent Marker', cursive;
-letter-spacing: 0.3rem;
+.text-title{
+font-family: 'Georgia', serif !important;
+font-size: 30px;
 text-transform: uppercase;
+border-bottom: 1px solid rgba(0,0,0,0.1);
+margin-left: -10% !important;
+color:rgb(53, 173, 169);
 }
 
 .text-blue{

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel' 
-import pic from '../Components/bf.jpg'
+import pic from '../Components/banner.jpg'
 
 class demoCarousel extends Component {
     render() {
         return (
-<Carousel>
+<Carousel className="mx-5">
   <Carousel.Item>
     <img
     width={500} height={450}

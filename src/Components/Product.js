@@ -9,7 +9,7 @@ export default class Product extends Component {
         const {id, title, img, price, inCart} = this.props.product;
         
         return (
-            <ProductWrapper className="clo-9 mx-auto col-md-6 col-lg-3 my-3">
+            <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-2">
                 <div className="card">
                     <ProductConsumer>
                     {(value)=> ( <div 
@@ -35,7 +35,7 @@ export default class Product extends Component {
                         <p  className="align-self-center mb-0">
                             {title}
                         </p>
-                        <h5 className="text-blue font-italic mb-0">
+                        <h5 className="mb-0" style={{color:"#35ada9"}}>
                             <span className="mr-1">$</span>
                             {price}
                         </h5>
@@ -62,19 +62,19 @@ const ProductWrapper = styled.div`
 .card{
     border-color:transparent;
     transition: all 1s linear;
+    border: 1px solid rgba(0,0,0,0.1);
 }
+
+
 .card-footer{
     background: transparent;
-    border-top: transparent;
+    border-top: 1px solid rgba(0,0,0,0.1);
     transition: all 1s linear;
 }
 &:hover{
     .card{
-        border:0.04rem solid rgba(0,0,0,0.2);
-        box-shadow:2px 2px 5px 0px rgba(0,0,0,0.2);
-    }
-    .card-footer{
-        background: rgba(247, 247, 247);
+        border:0.04rem solid rgba(0,0,0,0.1);
+        box-shadow:2px 2px 5px 0px rgba(0,0,0,0.1);
     }
 }
     .img-container{
