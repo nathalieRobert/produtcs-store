@@ -5,10 +5,10 @@ import pic from '../Components/banner.jpg'
 class demoCarousel extends Component {
     render() {
         return (
-<Carousel className="mx-5">
+<Carousel className="mx-5 mw-70">
   <Carousel.Item>
     <img
-    width={500} height={450}
+    width={"50%"} height={"50%"}
       className="d-block w-100"
       src={pic}
       alt="First slide"
@@ -17,7 +17,7 @@ class demoCarousel extends Component {
   </Carousel.Item>
   <Carousel.Item>
     <img
-      width={500} height={450}
+      width={"50%"} height={"50%"}
       className="d-block w-100"
       src={pic}
       alt="Third slide"
@@ -26,7 +26,7 @@ class demoCarousel extends Component {
   </Carousel.Item>
   <Carousel.Item>
     <img
-        width={500} height={450}
+        width={"50%"} height={"50%"}
       className="d-block w-100"
       src={pic}
       alt="Third slide"
