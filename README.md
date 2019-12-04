@@ -1,4 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Phone Store
+
+<img src=https://github.com/nathalieRobert/produtcs-store/blob/master/src/phone-store-cart.png width="500"/>
+
+## demo 
+https://the-mobile-store-by-nath.netlify.com/
+
+## Technologies
+- Reactjs,
+- Bootstrap,
+- PayPal API
+
+
 
 ## Available Scripts
 
